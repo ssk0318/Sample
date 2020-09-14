@@ -46,6 +46,6 @@ before_action :authenticate_user!, only: [:show]
 
     private
       def article_params
-        params.require(:article).permit(:model, :company, :length, :height, :width, :aisle, :image)
+        params.require(:article).permit(:model, :company, :length, :height, :width, :aisle, :passenger, :image)
       end
     end

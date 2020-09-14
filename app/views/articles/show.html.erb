@@ -29,6 +29,11 @@
 </p>
 
 <p>
+  <strong>乗客:</strong>
+  <%= @article.passenger %>
+</p>
+
+<p>
   <strong>画像:</strong>
   <%= image_tag(@article.image_url) if @article.image.present? %>
   <!--「if @article.image.present?」は画像挿入されてなくても詳細表示できるコマンド -->
