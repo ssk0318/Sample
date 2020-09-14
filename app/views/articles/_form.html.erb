@@ -1,0 +1,61 @@
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
+  <% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited
+      this article from being saved:</h2>
+  <ul>
+  <% @article.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </div>
+<% end %>
+
+  <p>
+    <%= form.label :機種 %><br>
+    <%= form.text_field :model %>
+  </p>
+
+  <p>
+    <%= form.label :メーカー %><br>
+    <%= form.select :company, Article.companies_i18n.keys.map {|k| [I18n.t("enums.article.company.#{k}"), k]},
+          {prompt: "選択してください"} %>
+
+    <!-- ＃OK
+    　　　Article.companyies.keys.map {|k| [I18n.t("enums.article.companys.#{k}"), k]} 
+         keyの表記がja.ymlの階層と全く同じにならないと翻訳されないので注意！(enumsなど/この場合はja.yml内の表記が複数形なので)-->
+    <!-- #OK but 選択フォルダ内が英語のまま
+         Article.companies_i18n.keys, {prompt: "選択してください"} -->
+    <!-- #enumなし
+         [["Boing", "Boing"], ["Airbus", "Airbus"], ["川崎重工業", "川崎重工業"]] include_blank: "選択して下さい"　-->
+   </p>
+
+  <p>
+    <%= form.label :全長 %><br>
+    <%= form.text_field :length %>
+  </p>
+
+  <p>
+    <%= form.label :尾翼高 %><br>
+    <%= form.text_field :height %>
+  </p>
+
+  <p>
+    <%= form.label :翼幅 %><br>
+    <%= form.text_field :width %>
+  </p>
+
+  <p>
+    <%= form.label :通路 %><br>
+    <%= form.text_field :aisle %>
+  </p>
+
+  <p>
+    <%= form.label :画像 %><br>
+    <%= form.file_field :image %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

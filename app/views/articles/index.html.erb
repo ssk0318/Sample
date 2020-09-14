@@ -1,0 +1,44 @@
+<h1>一覧</h1>
+
+<%= link_to '新規登録', new_article_path %>
+
+
+<table>
+  <tr>
+    <th>機種</th>
+    <th>メーカー</th>
+    <th>全長</th>
+    <th>尾翼高</th>
+    <th>翼幅</th>
+    <th>通路</th>
+    <!-- <th>画像</th> -->
+    <th colspan="6"></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.model %></td>
+      <td><%= article.company_i18n %></td>
+      <td><%= article.length %></td>
+      <td><%= article.height %></td>
+      <td><%= article.width %></td>
+      <td><%= article.aisle %></td>
+      <!--v<td><%= article.image %></td> -->
+      <td><%= link_to article_path(article) do %>
+            <i class="fa fa-info" aria-hidden="true"></i>
+            <% end%></td>
+      <td><%= link_to edit_article_path(article) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %></td>
+
+      <!-- link_to '編集', edit_article_path(article) -->
+      <td><%= link_to article_path(article),
+                method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %> </td>
+    </tr>
+  <% end %>
+
+</table>
+<%= link_to "プロフィール", 'users/show' %> 
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->

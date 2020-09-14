@@ -1,0 +1,39 @@
+<p>
+  <strong>機種:</strong>
+  <%= @article.model %>
+</p>
+
+<p>
+  <strong>メーカー:</strong>
+  <%= @article.company_i18n %>
+</p>
+
+<p>
+  <strong>全長:</strong>
+  <%= @article.length %>
+</p>
+
+<p>
+  <strong>尾翼高:</strong>
+  <%= @article.height %>
+</p>
+
+<p>
+  <strong>翼幅:</strong>
+  <%= @article.width %>
+</p>
+
+<p>
+  <strong>通路:</strong>
+  <%= @article.aisle %>
+</p>
+
+<p>
+  <strong>画像:</strong>
+  <%= image_tag(@article.image_url) if @article.image.present? %>
+  <!--「if @article.image.present?」は画像挿入されてなくても詳細表示できるコマンド -->
+</p>
+
+<%= link_to '戻る', articles_path %>
+  <%= link_to '編集', edit_article_path(@article) %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->

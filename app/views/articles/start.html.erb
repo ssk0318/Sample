@@ -1,0 +1,13 @@
+<h1>航空機スペック比較</h1>
+
+<% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
+  <!-- ユーザーがログインしていた時の処理 -->
+
+  <%= link_to "一覧", articles_path %> <!-- 一覧へ移動 -->
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
+<% else %>
+  <!-- ユーザーがログインしていなかった時の処理 -->
+  <h2> 閲覧にはログインが必要です </h2>
+  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+<% end %>
