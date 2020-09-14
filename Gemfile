@@ -61,4 +61,5 @@ gem 'devise-i18n-views'
 gem 'font-awesome-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'mini_magick'
+gem 'whenever', require: false
   # gem simple_form

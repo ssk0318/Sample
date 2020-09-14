@@ -9,6 +9,6 @@ namespace :task_sample do
         Article.find_each {|article| article.update!(passenger:nil)}
     
         #デバッグのため
-        p "ここまでOK"
+        p "OK!"
     end
 end
