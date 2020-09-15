@@ -20,9 +20,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "log/crontab.log"
-set :environment
 
-every 1.day do
-    rake "task_sample:reset_passenger "
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+rails_env = ENV['RAILS_ENV'] || :development
+set :output, "log/crontab.log"
+set :environment, Rails.env.to_sym
+
+every 1.day :at => '4:30 am' do
+    rake "task_sample:reset_passenger"
 end

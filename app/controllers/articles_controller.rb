@@ -1,23 +1,23 @@
 class ArticlesController < ApplicationController
 before_action :authenticate_user!, only: [:show]
-    def index
-      @articles = Article.all
-       flash[:notice] = "ログイン済ユーザーのみ記事の詳細を確認できます" unless user_signed_in?
-    end
+  def index
+    @articles = Article.all
+      flash[:notice] = "ログイン済ユーザーのみ記事の詳細を確認できます" unless user_signed_in?
+  end
 
-    def show
+  def show
       @article = Article.find(params[:id])
-    end
+  end
 
-    def new
+  def new
       @article = Article.new
-    end
+  end
 
-    def edit
+  def edit
       @article = Article.find(params[:id])
-    end
+  end
 
-    def create
+  def create
       @article = Article.new(article_params)
 
       if @article.save
@@ -25,9 +25,9 @@ before_action :authenticate_user!, only: [:show]
       else
         render 'new'
       end
-    end
+  end
 
-    def update
+  def update
       @article = Article.find(params[:id])
 
       if @article.update(article_params)
@@ -35,17 +35,17 @@ before_action :authenticate_user!, only: [:show]
       else
         render 'edit'
       end
-    end
+  end
 
-    def destroy
+  def destroy
       @article = Article.find(params[:id])
       @article.destroy
 
       redirect_to articles_path
-    end
+  end
 
     private
-      def article_params
+    def article_params
         params.require(:article).permit(:model, :company, :length, :height, :width, :aisle, :passenger, :image)
-      end
     end
+end
