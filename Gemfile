@@ -63,3 +63,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'mini_magick'
 gem 'whenever', require: false
   # gem simple_form
+
+# add new line
+
+
