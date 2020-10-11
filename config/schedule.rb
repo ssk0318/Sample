@@ -20,16 +20,16 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = ENV['RAILS_ENV'] || :development
-set :output, "log/crontab.log"
-# set :environment, Rails.env.to_sym
+set :environment, rails_env
+set :output, 'log/cron.log'
+job_type :runner, "export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rails runner :task ：output"
 
-# every 1.minute do
-#    rake "task_sample:reset_passenger"
-#  end
-
-every 1.day, :at => '6:30 pm' do
-   rake "task_sample:reset_passenger"
+every 1.minute do
+    runner "task_sample:reset_passenger"
 end
+
+# every 1.day, :at => '00:46 pm' do
+#   rake "task_sample:reset_passenger"
+# end
